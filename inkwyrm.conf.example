@@ -1,0 +1,56 @@
+# Inkwyrm headless config example
+#
+# Place this file on the SD card root as /inkwyrm.conf.
+# It uses a forgiving INI-style format:
+# - [section] headers
+# - key = value pairs
+# - # comments
+# - unknown sections/keys are ignored
+#
+# WARNING: this file may contain plaintext passwords before first boot.
+# The firmware scrubs password lines by default after importing them.
+# Set keep_secrets_on_sd = true only if you understand the plaintext-on-SD risk.
+
+[device]
+# Optional. Default false. When true, password lines are left intact on SD.
+keep_secrets_on_sd = false
+# Map to the built-in timezone preset list. Examples:
+#   America/Denver
+#   America/New_York
+#   UTC
+timezone = America/Denver
+
+[wifi]
+# SSID of the preferred network.
+ssid = YourWiFiName
+# Password for the SSID above.
+password = your-wifi-password
+
+[sync]
+# KOReader Sync / CWA KOSync settings.
+kosync_url = https://sync.example.com
+kosync_user = your-user
+kosync_password = your-sync-password
+# Cross-device document matching (how devices recognize "the same book"):
+#   binary   = fingerprint the file contents (recommended). Positions sync
+#              across devices no matter what each one names the file, as long
+#              as the book file itself is identical. Matches KOReader's method.
+#   filename = match by filename. Requires the SAME filename on every device.
+# Omit this line to leave the current on-device setting unchanged.
+kosync_match = binary
+
+[opds]
+# Primary OPDS catalog settings.
+url = https://catalog.example.com/opds
+user = your-opds-user
+password = your-opds-password
+
+[reader]
+# Safe reader prefs only. These map to existing CrossPointSettings values.
+# Supported values:
+#   font_family = notoserif | notosans
+#   font_size = small | medium | large | extra_large
+#   line_height = tight | normal | wide
+font_family = notoserif
+font_size = medium
+line_height = normal
