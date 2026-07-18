@@ -53,6 +53,12 @@ position through KOSync, and out of the way.
 It runs within the limits of the hardware: roughly 380 KB of RAM, no PSRAM, and
 a 4-level grayscale panel. Every feature has to fit inside that ceiling.
 
+## Standalone or self-hosted
+
+InkWyrm works fine on its own. Without anything else configured, it is CrossPoint 1.4.1 with a compact info bar, double-tap dark mode, more reliable WiFi joining, SD-card configuration, and some branding and typography polish.
+
+I made it for the self-hosted side, though. Point it at services you run and it can sync your reading position, browse your OPDS library, and send reading stats where you want them.
+
 ## The self-hosted angle
 
 A lot of what makes this fun is that it plugs into infrastructure I already run
@@ -72,6 +78,21 @@ at home, and none of it depends on anyone's cloud.
 
 If you run a similar setup, this drops straight in. If you do not, everything
 still works against any KOSync-compatible server.
+
+## Bring your own infrastructure
+
+None of this is required. You can just read.
+
+* **Reading-position sync:** a KOReader-KOSync-protocol server. This keeps your place in a book in sync across your devices.
+  * [koreader-sync-server](https://github.com/koreader/koreader-sync-server), the official option.
+  * [kosync-dotnet](https://github.com/jberlyn/kosync-dotnet), if you want to disable open registration.
+* **Your library over OPDS:** a Calibre-based OPDS catalog. This lets the reader browse and download books from your own library.
+  * [Calibre-Web-Automated](https://github.com/crocodilestick/Calibre-Web-Automated)
+  * [Calibre-Web](https://github.com/janeczku/calibre-web)
+* **Reading stats dashboard:** [KoInsight](https://github.com/GeorgeSG/KoInsight). It gives you a KOReader-stats-compatible view of your reading.
+* **Other devices in the sync fleet:** [KOReader](https://github.com/koreader/koreader). It can keep the X4 in sync with your other readers.
+
+Configuration lives in `inkwyrm.conf` on the SD card. See `inkwyrm.conf.example`.
 
 ## How it is built
 
